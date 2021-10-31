@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NhatKySanLuongKhoan.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,13 @@ namespace NhatKySanLuongKhoan.Controllers
 {
     public class CongNhanController : Controller
     {
+        private Model1 db = new Model1();
+
         // GET: CongNhan
         public ActionResult Index()
         {
-            return View();
+            var model = db.NHANCONGs.Where(x => x.MaNC != null).ToList();
+            return View(model);
         }
     }
 }

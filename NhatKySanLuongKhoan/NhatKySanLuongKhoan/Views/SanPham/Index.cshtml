@@ -1,7 +1,75 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
+@using NhatKySanLuongKhoan.Models;
 
-<h2>sản phẩm</h2>
+@model IEnumerable<SANPHAM>
+
+@{ ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+           Sản Phẩm
+        </div>
+        <div>
+            <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MaSP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TenSP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NgayDangKy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoDK)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HanSD)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaSP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenSP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayDangKy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoDK)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HanSD)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MaSP }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+                    </td>
+                </tr>
+                    }
+
+                </table>
 

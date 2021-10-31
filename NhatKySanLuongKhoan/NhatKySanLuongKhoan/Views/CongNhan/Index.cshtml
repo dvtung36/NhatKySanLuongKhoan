@@ -1,7 +1,90 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
+@*NhanCong*@
 
-<h2>Công Nhân</h2>
+@using NhatKySanLuongKhoan.Models;
+@model IEnumerable<NHANCONG>
+
+@{ ViewBag.Title = "NhanCong";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Công Nhân
+        </div>
+        <div>
+            <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MaNC)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Hoten)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ChucVu)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhongBan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LuongHopDong)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LuongBaoHiem)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.QueQuan)
+                        </th>
+                     
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaNC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChucVu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhongBan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LuongHopDong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LuongBaoHiem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QueQuan)
+                    </td>
+                    
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MaNC }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MaNC })
+                    </td>
+                </tr>
+                    }
+
+                </table>
 

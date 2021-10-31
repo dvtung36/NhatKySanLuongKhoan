@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NhatKySanLuongKhoan.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,15 @@ namespace NhatKySanLuongKhoan.Controllers
 {
     public class CongViecController : Controller
     {
+        private Model1 db = new Model1();
         // GET: CongViec
         public ActionResult Index()
         {
-            return View();
+            //var congViec = db.CVs.Include(c => c.).Include(c => c.SanPham);
+            //return View(congViec.ToList());
+
+            var model =  db.CVs.Where(x => x.MaCV != null).ToList();
+            return View(model);
         }
     }
 }

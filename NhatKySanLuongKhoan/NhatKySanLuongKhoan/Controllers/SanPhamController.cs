@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NhatKySanLuongKhoan.Models;
 
 namespace NhatKySanLuongKhoan.Controllers
 {
+   
     public class SanPhamController : Controller
     {
+        private Model1 db = new Model1();
         // GET: SanPham
         public ActionResult Index()
         {
-            return View();
+            var model = db.SANPHAMs.Where(x => x.MaSP != null).ToList();
+            return View(model);
         }
     }
 }
