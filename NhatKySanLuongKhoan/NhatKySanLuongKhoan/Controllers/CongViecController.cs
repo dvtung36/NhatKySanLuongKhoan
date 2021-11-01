@@ -19,5 +19,20 @@ namespace NhatKySanLuongKhoan.Controllers
             var model =  db.CVs.Where(x => x.MaCV != null).ToList();
             return View(model);
         }
+
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+        public ActionResult Edit()
+        {
+
+            return View();
+        }
+        public ActionResult Delete()
+        {
+            return View();
+        }
     }
 }

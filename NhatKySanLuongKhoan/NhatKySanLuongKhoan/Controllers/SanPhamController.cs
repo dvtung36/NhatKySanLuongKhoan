@@ -17,5 +17,19 @@ namespace NhatKySanLuongKhoan.Controllers
             var model = db.SANPHAMs.Where(x => x.MaSP != null).ToList();
             return View(model);
         }
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+        public ActionResult Edit()
+        {
+
+            return View();
+        }
+        public ActionResult Delete()
+        {
+            return View();
+        }
     }
 }

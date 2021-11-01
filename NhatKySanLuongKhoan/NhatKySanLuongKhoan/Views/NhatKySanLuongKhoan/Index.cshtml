@@ -1,7 +1,75 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
+@using NhatKySanLuongKhoan.Models;
+@model IEnumerable<NKSLK>
 
-<h2>Nhật ký sản lượng khoán</h2>
+@{ ViewBag.Title = "Nhật Ký Sản Lượng Khoán";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+           Nhật ký sản lượng khoán
+        </div>
+        <div>
+            <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MaKhoan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TenKhoan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ngaythuchien)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Giobatdau)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gioketthuc)
+                        </th>
+                       
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaKhoan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenKhoan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ngaythuchien)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Giobatdau)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gioketthuc)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MaKhoan }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MaKhoan })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
 

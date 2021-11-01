@@ -17,5 +17,19 @@ namespace NhatKySanLuongKhoan.Controllers
             var model = db.NHANCONGs.Where(x => x.MaNC != null).ToList();
             return View(model);
         }
+        public ActionResult Create()
+        {
+         
+            return View();
+        }
+        public ActionResult Edit()
+        {
+         
+            return View();
+        }
+        public ActionResult Delete()
+        {     
+            return View();
+        }
     }
 }

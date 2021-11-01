@@ -184,6 +184,18 @@
     <Content Include="Views\CongNhan\Index.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\CongNhan\Create.cshtml" />
+    <Content Include="Views\CongNhan\Edit.cshtml" />
+    <Content Include="Views\CongNhan\Delete.cshtml" />
+    <Content Include="Views\CongViec\Create.cshtml" />
+    <Content Include="Views\CongViec\Edit.cshtml" />
+    <Content Include="Views\CongViec\Delete.cshtml" />
+    <Content Include="Views\SanPham\Create.cshtml" />
+    <Content Include="Views\SanPham\Edit.cshtml" />
+    <Content Include="Views\SanPham\Delete.cshtml" />
+    <Content Include="Views\NhatKySanLuongKhoan\Create.cshtml" />
+    <Content Include="Views\NhatKySanLuongKhoan\Edit.cshtml" />
+    <Content Include="Views\NhatKySanLuongKhoan\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
