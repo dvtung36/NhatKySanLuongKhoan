@@ -1,7 +1,9 @@
 ﻿using NhatKySanLuongKhoan.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,17 +21,72 @@ namespace NhatKySanLuongKhoan.Controllers
         }
         public ActionResult Create()
         {
-         
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult Edit(string id)
         {
-         
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NHANCONG congNhan = db.NHANCONGs.Find(id);
+            if (congNhan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(congNhan);
         }
-        public ActionResult Delete()
-        {     
-            return View();
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NHANCONG congNhan = db.NHANCONGs.Find(id);
+            if (congNhan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(congNhan);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "MaNC,HoTen,NgaySinh,PhongBan,ChucVu,QueQuan,LuongHopDong,LuongBaoHiem,GioiTinh")] NHANCONG congNhan)
+        {
+            if (ModelState.IsValid)
+            {
+                db.NHANCONGs.Add(congNhan);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(congNhan);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MaNC,HoTen,NgaySinh,PhongBan,ChucVu,QueQuan,LuongHopDong,LuongBaoHiem,GioiTinh")] NHANCONG congNhan)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(congNhan).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(congNhan);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            NHANCONG congViec = db.NHANCONGs.Find(id);
+            db.NHANCONGs.Remove(congViec);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
