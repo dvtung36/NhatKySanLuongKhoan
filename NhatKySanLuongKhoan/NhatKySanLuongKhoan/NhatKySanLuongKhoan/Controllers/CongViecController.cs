@@ -35,6 +35,7 @@ namespace NhatKySanLuongKhoan.Controllers
             ViewBag.id_sanpham = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
             return View();
         }
+
         public ActionResult Edit(String id)
         {
             if (id == null)
@@ -49,6 +50,20 @@ namespace NhatKySanLuongKhoan.Controllers
             ViewBag.id_sanpham = new SelectList(db.SANPHAMs, "MaSP", "MaSP");
             return View(congViec);
         }
+        public ActionResult Detail(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CV congViec = db.CVs.Find(id);
+            if (congViec == null)
+            {
+                return HttpNotFound();
+            }
+            return View(congViec);
+        }
+
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -105,7 +120,9 @@ namespace NhatKySanLuongKhoan.Controllers
         public ActionResult timkiem(string search)
         {
             var model = db.CVs.Where(x => x.TenCV.Contains(search)).ToList();
-            return View("Index", model);
+            int pageSize = 6;
+            int pageNumber = (1);
+            return View("Index",model.ToPagedList(pageNumber, pageSize));
         }
 
 

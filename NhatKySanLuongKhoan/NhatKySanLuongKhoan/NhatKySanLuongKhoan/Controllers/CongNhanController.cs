@@ -60,6 +60,19 @@ namespace NhatKySanLuongKhoan.Controllers
             }
             return View(congNhan);
         }
+        public ActionResult Detail(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NHANCONG congNhan = db.NHANCONGs.Find(id);
+            if (congNhan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(congNhan);
+        }
 
 
         [HttpPost]
@@ -104,7 +117,9 @@ namespace NhatKySanLuongKhoan.Controllers
         public ActionResult timkiem(string search)
         {
             var model = db.NHANCONGs.Where(x => x.Hoten.Contains(search)).ToList();
-            return View("Index", model);
+            int pageSize = 6;
+            int pageNumber = (1);
+            return View("Index", model.ToPagedList(pageNumber, pageSize));
         }
     }
 }

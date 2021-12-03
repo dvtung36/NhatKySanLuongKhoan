@@ -2,11 +2,10 @@
 
 @{ ViewBag.Title = "Delete"; }
 
-<h2>Delete</h2>
+<h2>Detail</h2>
 
-<h3Bạn có chắc chắn muốn xóa cái này không?</h3>
 <div>
-    <h4>Xóa Nhân Công</h4>
+    <h4>Chi Tiết Nhân Công</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -86,10 +85,7 @@
     {
 @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("Back to List", "Index")
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="submit" value="Delete" class="btn btn-default" />
-</div>}
+                <div class="form-actions no-color">
+                    @Html.ActionLink("Back to List", "Index")
+                </div>}
 </div>

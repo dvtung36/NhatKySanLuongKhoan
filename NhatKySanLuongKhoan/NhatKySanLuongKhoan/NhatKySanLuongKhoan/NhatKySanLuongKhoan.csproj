@@ -205,6 +205,8 @@
     <Content Include="Views\NhatKySanLuongKhoan\Create.cshtml" />
     <Content Include="Views\NhatKySanLuongKhoan\Edit.cshtml" />
     <Content Include="Views\NhatKySanLuongKhoan\Delete.cshtml" />
+    <Content Include="Views\CongViec\Detail.cshtml" />
+    <Content Include="Views\CongNhan\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
