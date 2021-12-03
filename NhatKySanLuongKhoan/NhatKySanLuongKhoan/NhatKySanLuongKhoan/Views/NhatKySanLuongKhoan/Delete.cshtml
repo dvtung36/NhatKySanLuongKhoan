@@ -1,0 +1,64 @@
+﻿@model NhatKySanLuongKhoan.Models.NKSLK
+
+@{ ViewBag.Title = "Delete"; }
+
+<h2>Delete</h2>
+
+<h3>Bạn có chắc chắn muốn xóa cái này không?</h3>
+<div>
+    <h4>NKSLK</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKhoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKhoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaythuchien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaythuchien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giobatdau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giobatdau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gioketthuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gioketthuc)
+        </dd>
+
+        
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>}
+</div>

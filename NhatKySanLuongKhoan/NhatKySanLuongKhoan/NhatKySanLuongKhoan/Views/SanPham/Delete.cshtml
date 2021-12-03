@@ -1,0 +1,71 @@
+﻿@model NhatKySanLuongKhoan.Models.SANPHAM
+
+@{ ViewBag.Title = "Delete"; }
+
+<h2>Delete</h2>
+
+<h3>Bạn có chắc chắn muốn xóa cái này không?</h3>
+<div>
+    <h4>CongNhan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HanSD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HanSD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuyCach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuyCach)
+        </dd>
+
+        
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>}
+</div>
