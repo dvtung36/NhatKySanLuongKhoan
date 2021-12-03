@@ -1,8 +1,8 @@
 ﻿
-@*NhanCong*@
-
 @using NhatKySanLuongKhoan.Models;
-@model IEnumerable<NHANCONG>
+@using PagedList.Mvc;
+@model PagedList.IPagedList<NHANCONG>
+
 
 @{ ViewBag.Title = "NhanCong";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
@@ -10,7 +10,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2>Danh Sách Nhân Công</h2> 
+            <h2>Danh Sách Nhân Công</h2>
         </div>
         <div>
             <table class="table" ui-jq="footable" ui-options='{
@@ -26,35 +26,35 @@
 
                 <p>
                     @Html.ActionLink("Create new", "Create")
-           
+
                 </p>
                 <table class="table">
-                    <form class="navbar-form navbar-right" action="/CongNhan/timkiem" method="post"   >
+                    <form class="navbar-form navbar-right" action="/CongNhan/timkiem" method="post">
                         <span class="icon icon-search2"></span>
-                        <input type="text" name="search" class="form-control border-0" placeholder="Nhập Tên Nhân Công" style = "width:500px;height:40px;background: #e8f0fe !important; ">
+                        <input type="text" name="search" class="form-control border-0" placeholder="Nhập Tên Nhân Công" style="width:500px;height:40px;background: #e8f0fe !important; ">
                     </form>
 
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.MaNC)
+                           Mã Công Nhân
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Hoten)
+                            Họ Tên
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ChucVu)
+                            Chức Vụ
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PhongBan)
+                            Phòng Ban
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.LuongHopDong)
+                           Lương Hợp Đồng
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.LuongBaoHiem)
+                           Lương Bảo Hiểm
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.QueQuan)
+                           Quê Quán
                         </th>
 
                         <th></th>
@@ -94,3 +94,9 @@
 
                 </table>
 
+                <br />
+                <br />
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page }))

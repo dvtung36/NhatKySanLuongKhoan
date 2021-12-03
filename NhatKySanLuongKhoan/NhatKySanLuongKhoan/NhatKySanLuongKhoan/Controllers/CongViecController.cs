@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
+using System.IO;
 
 namespace NhatKySanLuongKhoan.Controllers
 {
@@ -13,11 +16,16 @@ namespace NhatKySanLuongKhoan.Controllers
     {
         private Model1 db = new Model1();
         // GET: CongViec
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-         
-            var model =  db.CVs.Where(x => x.MaCV != null).ToList();
-            return View(model);
+
+            //var model =  db.CVs.Where(x => x.MaCV != null).ToList();
+            //return View(model);
+            if (page == null) page = 1;
+            var model = db.CVs.Where(x => x.MaCV != null).ToList();
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(model.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Create()
