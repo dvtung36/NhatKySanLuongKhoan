@@ -5,6 +5,7 @@ namespace NhatKySanLuongKhoan.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("SANPHAM")]
     public partial class SANPHAM
@@ -13,6 +14,7 @@ namespace NhatKySanLuongKhoan.Models
         public SANPHAM()
         {
             CVs = new HashSet<CV>();
+            Hinh = "~/Upload/SanPham/add.png";
         }
 
         [Key]
@@ -46,5 +48,7 @@ namespace NhatKySanLuongKhoan.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CV> CVs { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase uploadhinh { get; set; }
     }
 }

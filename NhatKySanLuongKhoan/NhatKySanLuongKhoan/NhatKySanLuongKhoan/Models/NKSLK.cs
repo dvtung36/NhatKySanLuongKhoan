@@ -20,7 +20,6 @@ namespace NhatKySanLuongKhoan.Models
         [StringLength(10)]
         public string MaKhoan { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string TenKhoan { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿
 @using NhatKySanLuongKhoan.Models;
-@model IEnumerable<NKSLK>
+@using PagedList.Mvc;
+@model PagedList.IPagedList<NKSLK>
 
 @{ ViewBag.Title = "Nhật Ký Sản Lượng Khoán";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
@@ -8,7 +9,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
         <div class="panel-heading">
-           Nhật ký sản lượng khoán
+            Nhật ký sản lượng khoán
         </div>
         <div>
             <table class="table" ui-jq="footable" ui-options='{
@@ -26,24 +27,28 @@
                     @Html.ActionLink("Create New", "Create")
                 </p>
                 <table class="table">
+                    <form class="navbar-form navbar-right" action="/NhatKySanLuongKhoan/timkiem" method="post">
+                        <span class="icon icon-search2"></span>
+                        <input type="text" name="search" class="form-control border-0" placeholder="Nhập Tên khoán" style="width:500px;height:40px;background: #e8f0fe !important; ">
+                    </form>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.MaKhoan)
+                            Mã Khoán
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TenKhoan)
+                            Tên Khoán
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Ngaythuchien)
+                            Ngày thực hiện
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Giobatdau)
+                            Giờ bắt đầu
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Gioketthuc)
+                            Giờ kết thúc
                         </th>
-                       
-                        <th></th>
+
+
                     </tr>
 
                     @foreach (var item in Model)
@@ -72,4 +77,9 @@
                     }
 
                 </table>
+                <br />
+                <br />
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page }))

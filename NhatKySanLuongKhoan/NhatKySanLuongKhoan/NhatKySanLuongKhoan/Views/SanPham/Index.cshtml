@@ -1,7 +1,8 @@
 ﻿
 @using NhatKySanLuongKhoan.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<SANPHAM>
 
-@model IEnumerable<SANPHAM>
 
 @{ ViewBag.Title = "SanPham";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
@@ -9,7 +10,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
         <div class="panel-heading">
-           Sản Phẩm
+            Sản Phẩm
         </div>
         <div>
             <table class="table" ui-jq="footable" ui-options='{
@@ -27,49 +28,72 @@
                     @Html.ActionLink("Create New", "Create")
                 </p>
                 <table class="table">
+                    <form class="navbar-form navbar-right" action="/SanPham/timkiem" method="post">
+                        <span class="icon icon-search2"></span>
+                        <input type="text" name="search" class="form-control border-0" placeholder="Nhập Tên sản phẩm" style="width:500px;height:40px;background: #e8f0fe !important; ">
+                    </form>
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.MaSP)
+                        <th style="width:200px">
+                            Mã sản phẩm
+
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TenSP)
+                            Tên sản phảm
+
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.NgayDangKy)
+                            Hình ảnh
+
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.SoDK)
+                            Ngày đăng ký
+
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.HanSD)
+                            Số đăng ký
+
+                        </th>
+                        <th>
+                            Hạn sử dụng
+
                         </th>
                         <th></th>
                     </tr>
 
                     @foreach (var item in Model)
                     {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MaSP)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TenSP)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NgayDangKy)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SoDK)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HanSD)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.MaSP }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
-                    </td>
-                </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaSP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenSP)
+                            </td>
+                            <td>
+                                <img src="..\Upload\SanPham\@item.Hinh" style="width:50px;height:50px;">
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgayDangKy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoDK)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HanSD)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MaSP }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+                            </td>
+                        </tr>
                     }
 
                 </table>
 
+                <br />
+                <br />
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page }))

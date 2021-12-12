@@ -149,6 +149,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Upload\SanPham\1.png" />
+    <Content Include="Upload\SanPham\12.png" />
+    <Content Include="Upload\SanPham\13.png" />
+    <Content Include="Upload\SanPham\14.png" />
+    <Content Include="Upload\SanPham\2.jpg" />
+    <Content Include="Upload\SanPham\3.jpg" />
+    <Content Include="Upload\SanPham\4.jpg" />
+    <Content Include="Upload\SanPham\5.jpg" />
+    <Content Include="Upload\SanPham\6.jpg" />
+    <Content Include="Upload\SanPham\add.png" />
     <Content Include="Web.config" />
     <Content Include="Views\CongViec\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />

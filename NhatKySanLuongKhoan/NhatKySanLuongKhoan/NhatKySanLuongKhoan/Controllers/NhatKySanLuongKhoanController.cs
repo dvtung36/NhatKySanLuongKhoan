@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace NhatKySanLuongKhoan.Controllers
 {
@@ -13,10 +15,13 @@ namespace NhatKySanLuongKhoan.Controllers
     {
         private Model1 db = new Model1();
         // GET: NhatKySanLuongKhoan
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            if (page == null) page = 1;
             var model = db.NKSLKs.Where(x => x.MaKhoan != null).ToList();
-            return View(model);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(model.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Create()
         {
@@ -86,6 +91,16 @@ namespace NhatKySanLuongKhoan.Controllers
             db.NKSLKs.Remove(nKSLK);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult timkiem(string search)
+        {
+            var model = db.NKSLKs.Where(x => x.TenKhoan.Contains(search)).ToList();
+            int pageSize = 6;
+            int pageNumber = (1);
+            return View("Index", model.ToPagedList(pageNumber, pageSize));
+
         }
     }
 }
