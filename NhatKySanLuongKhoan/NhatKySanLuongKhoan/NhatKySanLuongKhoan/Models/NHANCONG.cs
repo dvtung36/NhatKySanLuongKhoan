@@ -22,8 +22,8 @@ namespace NhatKySanLuongKhoan.Models
         [StringLength(50)]
         public string Hoten { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? NgaySinh { get; set; }
+        [StringLength(50)]
+        public string NgaySinh { get; set; }
 
         [StringLength(50)]
         public string PhongBan { get; set; }
@@ -38,6 +38,7 @@ namespace NhatKySanLuongKhoan.Models
 
         public int? LuongBaoHiem { get; set; }
 
+        [Required]
         [StringLength(5)]
         public string GioiTinh { get; set; }
 

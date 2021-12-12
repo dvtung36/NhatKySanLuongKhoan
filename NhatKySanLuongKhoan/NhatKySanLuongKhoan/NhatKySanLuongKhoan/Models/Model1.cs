@@ -8,7 +8,7 @@ namespace NhatKySanLuongKhoan.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model1")
+            : base("name=Model11")
         {
         }
 
@@ -16,9 +16,11 @@ namespace NhatKySanLuongKhoan.Models
         public virtual DbSet<NHANCONG> NHANCONGs { get; set; }
         public virtual DbSet<NKSLK> NKSLKs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<DMCV> DMCVs { get; set; }
         public virtual DbSet<DMNC> DMNCs { get; set; }
+        public virtual DbSet<Sogiocuakhoan_v> Sogiocuakhoan_v { get; set; }
+        public virtual DbSet<Sogionhanvienlamtungchung_v> Sogionhanvienlamtungchung_v { get; set; }
+        public virtual DbSet<Tylelamviec_v> Tylelamviec_v { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -37,10 +39,6 @@ namespace NhatKySanLuongKhoan.Models
 
             modelBuilder.Entity<NHANCONG>()
                 .Property(e => e.MaNC)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NHANCONG>()
-                .Property(e => e.GioiTinh)
                 .IsUnicode(false);
 
             modelBuilder.Entity<NHANCONG>()
@@ -96,6 +94,26 @@ namespace NhatKySanLuongKhoan.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<DMNC>()
+                .Property(e => e.MaNC)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Sogiocuakhoan_v>()
+                .Property(e => e.MaKhoan)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Sogionhanvienlamtungchung_v>()
+                .Property(e => e.MaKhoan)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Sogionhanvienlamtungchung_v>()
+                .Property(e => e.MaNC)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tylelamviec_v>()
+                .Property(e => e.MaKhoan)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tylelamviec_v>()
                 .Property(e => e.MaNC)
                 .IsUnicode(false);
         }

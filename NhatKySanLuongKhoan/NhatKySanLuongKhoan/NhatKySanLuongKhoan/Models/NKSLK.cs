@@ -20,15 +20,16 @@ namespace NhatKySanLuongKhoan.Models
         [StringLength(10)]
         public string MaKhoan { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string TenKhoan { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? Ngaythuchien { get; set; }
+        public DateTime Ngaythuchien { get; set; }
 
-        public int? Giobatdau { get; set; }
+        public DateTime Giobatdau { get; set; }
 
-        public int? Gioketthuc { get; set; }
+        public DateTime Gioketthuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DMCV> DMCVs { get; set; }

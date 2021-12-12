@@ -31,12 +31,18 @@ namespace NhatKySanLuongKhoan.Models
         [StringLength(50)]
         public string HanSD { get; set; }
 
+        [StringLength(50)]
+        public string QuyCach { get; set; }
+
         [Required]
         [StringLength(50)]
         public string NgayDangKy { get; set; }
 
-        [StringLength(50)]
-        public string QuyCach { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? NgaySanXuat { get; set; }
+
+        [StringLength(250)]
+        public string Hinh { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CV> CVs { get; set; }
