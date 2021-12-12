@@ -90,7 +90,7 @@ namespace NhatKySanLuongKhoan.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,SoDK,HanSD,NgayDangKy,QyCach")] SANPHAM sanPham)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,SoDK,HanSD,NgayDangKy,QuyCach")] SANPHAM sanPham)
         {
             if (ModelState.IsValid)
             {

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList.Mvc;
 using PagedList;
+using System.IO;
 
 namespace NhatKySanLuongKhoan.Controllers
 {
@@ -22,11 +23,13 @@ namespace NhatKySanLuongKhoan.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(model.ToPagedList(pageNumber, pageSize));
+
         }
         public ActionResult Create()
         {
 
-            return View();
+            NKSLK nKSLK = new NKSLK();
+            return View(nKSLK);
         }
         public ActionResult Edit(string id)
         {
@@ -56,7 +59,7 @@ namespace NhatKySanLuongKhoan.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKhoan,TenKhoan,Ngaythuchien,GiobatdaucVu,Gioketthuc")] NKSLK nKSLK)
+        public ActionResult Create([Bind(Include = "MaKhoan,TenKhoan,Ngaythuchien,Giobatdau,Gioketthuc")] NKSLK nKSLK)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +73,7 @@ namespace NhatKySanLuongKhoan.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKhoan,TenKhoan,Ngaythuchien,GiobatdaucVu,Gioketthuc")] NKSLK nKSLK)
+        public ActionResult Edit([Bind(Include = "MaKhoan,TenKhoan,Ngaythuchien,Giobatdau,Gioketthuc")] NKSLK nKSLK)
         {
 
             if (ModelState.IsValid)
@@ -91,16 +94,6 @@ namespace NhatKySanLuongKhoan.Controllers
             db.NKSLKs.Remove(nKSLK);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult timkiem(string search)
-        {
-            var model = db.NKSLKs.Where(x => x.TenKhoan.Contains(search)).ToList();
-            int pageSize = 6;
-            int pageNumber = (1);
-            return View("Index", model.ToPagedList(pageNumber, pageSize));
-
         }
     }
 }

@@ -5,6 +5,8 @@ namespace NhatKySanLuongKhoan.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
+
 
     [Table("NKSLK")]
     public partial class NKSLK
@@ -25,10 +27,10 @@ namespace NhatKySanLuongKhoan.Models
 
         [Column(TypeName = "date")]
         public DateTime Ngaythuchien { get; set; }
-
-        public DateTime Giobatdau { get; set; }
-
-        public DateTime Gioketthuc { get; set; }
+        [Required]
+        public DateTime? Giobatdau { get; set; }
+        [Required]
+        public DateTime? Gioketthuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DMCV> DMCVs { get; set; }
