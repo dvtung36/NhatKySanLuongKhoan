@@ -95,5 +95,14 @@ namespace NhatKySanLuongKhoan.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult timkiem(string search)
+        {
+            var model = db.NKSLKs.Where(x => x.TenKhoan.Contains(search)).ToList();
+            int pageSize = 6;
+            int pageNumber = (1);
+            return View("Index", model.ToPagedList(pageNumber, pageSize));
+
+        }
     }
 }
