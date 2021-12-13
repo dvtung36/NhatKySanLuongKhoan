@@ -115,6 +115,7 @@
     <Content Include="Content\css\css\jqvmap.css" />
     <Content Include="Content\css\css\lines.css" />
     <Content Include="Content\css\css\style.css" />
+    <Content Include="Content\css\css\Style1.css" />
     <Content Include="Content\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\css\js\bootstrap.min.js" />
     <Content Include="Content\css\js\Chart.js" />
